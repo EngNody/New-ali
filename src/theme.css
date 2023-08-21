@@ -25,6 +25,15 @@
 }
 
 /* ==============
+  Light mode
+=================*/
+.Light h5,.Light h1,.Light h2,time{
+  color: black !important;
+}
+
+
+
+/* ==============
   Dark mode
 =================*/
 
@@ -33,6 +42,7 @@
   background-color: #242424;
 }
 
+
 .Dark main {
   color: rgba(255, 255, 255, 0.87);
 }
@@ -40,7 +50,9 @@
 .Dark .ali {
   background-color: rgba(17, 17, 17, 0.885) !important
 }
-
+.Dark time{
+  color: #fff !important;
+}
 
 /* ==============
 Icon (sun & moon)

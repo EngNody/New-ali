@@ -1,13 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/home";
-import HTML from "./pages/html";
-import Css from "./pages/css";
-import Javascript from "./pages/javascript";
+import Home from "./pages/Home";
+import HTML from "./pages/About";
+import Profile from "./pages/Profile";
+import Css from "./pages/Css";
+import Javascript from "./pages/Javascript";
 // LEVEL2
 import { useContext } from "react";
 import ThemeContext from "./context/ThemeContext";
 import Signin from './pages/Singin';
 import Signup from './pages/Signup';
+
 
 const router = createBrowserRouter([
   {
@@ -40,11 +42,17 @@ const router = createBrowserRouter([
   {
     path: "/javascript",
     element: <Javascript />,
+  }, 
+ {
+    path: "/profile",
+    element: <Profile />,
   },
 ]);
 
 function App() {
   const { theme } = useContext(ThemeContext);
+
+
   return (
     <div className={`${theme}`}>
       <RouterProvider router={router} />

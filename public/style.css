@@ -35,7 +35,9 @@
   padding: 8px 15px;
 }
 
-.main-link:hover,  .main-link.active{
+.main-link:hover
+/* ,  .main-link.active */
+{
   color: cyan;
   box-shadow: 0 0 5px cyan;
   border-radius: 5px;
@@ -49,7 +51,7 @@
   display: none;
 
   position: absolute;
-  top: 69px;
+  top: 63px;
   left: -15px;
   border-top: 1px solid cyan;
 

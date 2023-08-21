@@ -83,7 +83,7 @@ const Header = () => {
         
           {user &&   <li className="main-list">
             <NavLink className="main-link" to="/html">
-              HTML
+              About
             </NavLink>
             <ul className="sub-ul">
               <li>
@@ -97,8 +97,36 @@ const Header = () => {
               </li>
             </ul>
           </li> }
-          
+
           {user &&   <li className="main-list">
+          <NavLink className="main-link" to="/css">
+            Css 
+          </NavLink>
+          <ul className="sub-ul">
+            <li>
+              <a href="#">Full Course</a>
+            </li>
+            <li>
+              <a href="#">Css Courses</a>
+            </li>
+            <li className="mini-projects">
+              <a href="#">learn in 1h  <i className="fas fa-plus" /> </a>
+              <ul className="sub-sub-ul">
+                <li>
+                  <a href="#">Project 1</a>
+                </li>
+                <li>
+                  <a href="#">Project 2</a>
+                </li>
+                <li>
+                  <a href="#">Project 3</a>
+                </li>
+              </ul>
+            </li> 
+          </ul>
+        </li> }  
+          
+        {/*  {user &&   <li className="main-list">
             <NavLink className="main-link" to="/javascript">
               JavaScript
             </NavLink>
@@ -107,9 +135,19 @@ const Header = () => {
                 <a href="/javascript">coming soon🔥</a>
               </li>
             </ul>
-          </li>}
+        </li>} */}
+      
+
+          {user &&   <li className="main-list">
+          <NavLink className="main-link" to="/profile">
+            Profile
+          </NavLink>
+  
+        </li> }
+
         </ul>
       </header>
+
 
       <header className="show-when-mobile ali">
         <h1>c4a.dev</h1>
@@ -145,7 +183,7 @@ const Header = () => {
                 <NavLink to="/css">Full Course</NavLink>
               </li>
               <li>
-                <a href="">CSS Examples</a>
+                <a href="#">CSS Examples</a>
               </li>
               <li>
                 <label className="mini-projects" htmlFor="mini">

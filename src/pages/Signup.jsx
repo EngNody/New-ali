@@ -7,15 +7,51 @@ import { useState } from 'react';
 import { auth } from '../firebase/config';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { updateProfile ,sendEmailVerification} from "firebase/auth";
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+
 
 
 const Signup = () => {
+  const [userName, setuserName] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
   const [haserror, sethaserror] = useState(false);
   const [firebaseerror, setfirebaseerror] = useState("");
 
+  const [user, loading, error] = useAuthState(auth);
+
+
+  if (loading) {
+    return (
+      <div>
+      <Header/>
+      <main>
+      <h2>Loading ...............</h2>
+      </main>
+      <Footer/>
+      </div>
+    );
+  }
+if (user) {
+  if (!user.emailVerified) {
+    return (
+      <div>
+      <Header/>
+      <main>
+      <p>We send you an email to vertify your Account</p>
+      <button className="delete">Send Again</button>
+      </main>
+      <Footer/>
+      </div>
+    );
+  }
+}
+
+if (!user) {
+  
   return (
     <>
       <Helmet>
@@ -26,6 +62,12 @@ const Signup = () => {
       <main>
         <form>
           <p style={{ fontSize: "23px", marginBottom: "22px" }}>Create a new account <span>🧡</span> </p>
+        
+          <input onChange={(eo) => {
+
+            setuserName(eo.target.value)
+          }} required placeholder=" User Name : " type="text" />
+        
           <input onChange={(eo) => {
 
             setemail(eo.target.value)
@@ -42,7 +84,26 @@ const Signup = () => {
               .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                navigate("/signin");
+
+                sendEmailVerification(auth.currentUser)
+                .then(() => {
+                  // Email verification sent!
+                  // ...
+                });
+
+                updateProfile(auth.currentUser, {
+                  displayName: userName, 
+                  photoURL: "https://example.com/jane-q-user/profile.jpg"
+                }).then(() => {
+                  navigate("/");
+                  // Profile updated!
+                  // ...
+                }).catch((error) => {
+                  console.log("error")
+                  // An error occurred
+                  // ...
+                });
+
                 console.log("doneeeeeeeeee")
                 // ...
               })
@@ -97,6 +158,7 @@ const Signup = () => {
       <Footer />
     </>
   );
+}
 };
 
 export default Signup;

@@ -44,7 +44,7 @@ h1 {
 }
 
 .sub-ul,
-.sub-sub-ul {
+.mini-projects:hover .sub-sub-ul {
   animation: hoverrr 1s 1;
 }
 
