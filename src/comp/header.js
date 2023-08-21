@@ -82,7 +82,7 @@ const Header = () => {
 
         
           {user &&   <li className="main-list">
-            <NavLink className="main-link" to="/html">
+            <NavLink className="main-link" to="/about">
               About
             </NavLink>
             <ul className="sub-ul">

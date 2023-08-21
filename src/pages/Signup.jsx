@@ -9,6 +9,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { updateProfile ,sendEmailVerification} from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useEffect } from 'react';
 
 
 
@@ -22,6 +23,15 @@ const Signup = () => {
   const [firebaseerror, setfirebaseerror] = useState("");
 
   const [user, loading, error] = useAuthState(auth);
+
+
+  useEffect(() => {
+    if (user) {
+    if (user.emailVerified) {
+      navigate("/")
+    }
+  }
+  })
 
 
   if (loading) {

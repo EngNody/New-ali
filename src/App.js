@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
-import HTML from "./pages/About";
+import About from "./pages/About";
 import Profile from "./pages/Profile";
 import Css from "./pages/Css";
 import Javascript from "./pages/Javascript";
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
 
 
   {
-    path: "/html",
-    element: <HTML />,
+    path: "/about",
+    element: <About />,
   },
 
   {

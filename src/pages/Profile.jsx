@@ -18,7 +18,10 @@ const Profile = () => {
     if (!user && !loading) {
       navigate("/")
     }
-  } , [user])
+    if (!user.emailVerified) {
+      navigate("/")
+    }
+  })
 
   if (loading) {
     return (

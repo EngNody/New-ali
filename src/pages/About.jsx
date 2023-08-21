@@ -8,28 +8,50 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 
 
-const Html = () => {
+const About = () => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate("Hi User");
   useEffect(() => {
     console.log("hiiiiiiiiii")
-    if (!user) {
+    if (!user && !loading) {
       navigate("/signin")
     }
   } , [user])
 
+  if (loading) {
+    return (
+      <div>
+      <Header/>
+      <main>
+      <h2>Loading ...............</h2>
+      </main>
+      <Footer/>
+      </div>
+    );
+  }
 
-  return (
-    <>
-      <Helmet>
-        <title>About Page</title>
-        <meta name="description" content="HTMLLLLLLLLLLLLLLLL" />
-      </Helmet>
-      <Header />
-      <MainContent pageName="About Page" />
-      <Footer />
-    </>
-  );
+  if (user) {
+    if (user.emailVerified) {
+      return (
+        <div>
+          <Helmet>
+            <title>About Page</title>
+            <meta name="description" content="HTMLLLLLLLLLLLLLLLL" />
+          </Helmet>
+          <Header />
+          <MainContent pageName="About Page" />
+          <Footer />
+        </div>
+      );
+    }
+
+    if (!user.emailVerified) {
+      navigate("/")
+    }
+  }
+
+
+
 };
 
-export default Html;
+export default About;
