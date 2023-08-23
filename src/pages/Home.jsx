@@ -10,7 +10,6 @@ import { sendEmailVerification } from "firebase/auth";
 
 const Home = () => {
   const [user, loading, error] = useAuthState(auth);
-  console.log(user)
 
   if (loading) {
     return (

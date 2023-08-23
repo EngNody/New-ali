@@ -9,7 +9,29 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: fixed;
+/* display: none; */
+scale: 0;
+transform: translateY(-100vh);
+transition: all 1s;
+}
 
+.showforgotpassword{
+/* display: flex; */
+scale: 1;
+transform: translateY(0);
+
+}
+
+.forget-pass{
+  font-size: 19px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.forget-pass:hover{
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.5s;
 }
 
 .close .fa-xmark{
@@ -33,7 +55,7 @@ position: fixed;
 }
 
 .check-email{
-  color: black;
+  color: #333;
   font-size: 25px;
   margin-top: 20px;
   line-height: 35px;
