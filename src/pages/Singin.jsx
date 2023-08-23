@@ -31,8 +31,8 @@ const Signin = () => {
       <main>
       
     <form className={`forgot-password ${showform}`}>
-    <div className="close" onClick={(eo) => {
-      setshowform("")
+    <div className="close" onClick={() => {
+      setshowform(" ")
     }}><i className="fa-solid fa-xmark"></i></div>
 
     <input required placeholder=" E-mail : " type="email" 
@@ -54,6 +54,7 @@ const Signin = () => {
     const errorCode = error.code;
     console.log(errorCode)
     const errorMessage = error.message;
+    console.log(errorMessage)
     // ..
   });
     }} >Reset password</button>
@@ -78,6 +79,7 @@ const Signin = () => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    console.log(user)
     navigate("/");
 
     // ...
@@ -88,6 +90,7 @@ const Signin = () => {
     console.log(errorCode)
     // i`m write codes with errorcode
     const errorMessage = error.message;
+    console.log(errorMessage)
     // console.log(errorMessage)
 
     sethaserror(true)

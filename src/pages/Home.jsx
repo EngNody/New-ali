@@ -6,17 +6,32 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 import { Link } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
+import ReactLoading from 'react-loading';
 
 
 const Home = () => {
   const [user, loading, error] = useAuthState(auth);
 
+
+
+
+  
   if (loading) {
     return (
       <div>
       <Header/>
       <main>
-      <h2>Loading ...............</h2>
+    {/*  <h2>Loading ...............</h2> */}
+
+    {/* <div>
+    <ReactLoading type="spin" color="red" height={'20%'} width={'10%'} />
+        </div>
+        and npm uninstall react-loading in terminal */}
+
+        <div className="page-loading"></div>
+
+
+
       </main>
       <Footer/>
       </div>
