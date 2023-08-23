@@ -1,0 +1,53 @@
+
+
+.forgot-password{
+background-color: whitesmoke;
+width: 400px;
+height: 333px;
+border-radius: 12px;
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+
+}
+
+.close .fa-xmark{
+  font-size: 29px;
+  color: #444;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  cursor: pointer;
+  transition: all 1s;
+  /* ============= new ================= */
+  user-select: none;
+}
+
+.fa-xmark:hover{
+  color: orange;
+  font-size: 30px;
+  transform: rotate(180deg);
+  transition: all 1s;
+
+}
+
+.check-email{
+  color: black;
+  font-size: 25px;
+  margin-top: 20px;
+  line-height: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
