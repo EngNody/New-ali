@@ -13,14 +13,3 @@ main{
  
   text-align: center;
 }
-
-@media screen and (max-width:500px) {
-  main{
-    border: 2px solid blue;
-    font-size: 20px;
-    /* width: 80vw !important;
-    flex-wrap: wrap;
-    overflow: hidden !important; */
-    /* margin:0 30px !important; */
-  }
-}

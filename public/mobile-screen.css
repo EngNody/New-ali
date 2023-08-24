@@ -1,9 +1,60 @@
 
 
+.hide-when-mobile {
+  flex-direction: column;
+}
+
+main{
+  /* border: 2px solid blue; */
+  font-size: 20px !important;
+  /* width: 80vw !important;
+  flex-wrap: wrap;
+  overflow: hidden !important; */
+  /* margin:0 30px !important; */
+}
+
+p,button,a{
+  font-size: 17px !important;
+}
+
+.main-list{
+  padding: 10px 10px;
+}
+
+@media screen and (max-width:430px){
+  .flex{
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+  }
+}
+
+.sub-ul {
+  width: 130px;
+  z-index: 100;
+  top: 40px;
+  left: -15px;
+}
+
+.sub-sub-ul{
+  top: 117px;
+  left: 0px;
+  width: 130px;
+}
+
+
+
+
+
+
+
+
+
+
 /* ====================================
     1. Font Awesom hamburger menu
 ======================================= */
-.absolute {
+/* .absolute {
   position: absolute;
   top: 0;
   right: 10px;
@@ -22,13 +73,13 @@ input {
 .fas{
   position: absolute;
   right: 10vw;
-}
+} */
 
 /* ====================================
     2. show on click
 ======================================= */
 
-.show-on-click {
+/* .show-on-click {
   display: none;
   border-top: 2px solid black;
 }
@@ -38,9 +89,9 @@ input {
 }
 
 label{
-  font-size: 22px;
+  font-size: 22px; */
   /* border: 2px solid red; */
-  display: block;
+  /* display: block;
   padding: 20px;
 }
 
@@ -62,13 +113,13 @@ label:hover .fas
 
 .main-div{
   border-bottom: 2px solid black;
-}
+} */
 
 /* ====================================
     3. sub of div
 ======================================= */
 
-.sub-div {
+/* .sub-div {
   display: none;
 }
 
@@ -82,14 +133,14 @@ label:hover .fas
 .sub-div li{
   font-size: 17px;
   padding: 10px 0 10px 35px;
-}
+} */
 
 
 
 /* ====================================
     3. sub sub of css
 ======================================= */
-.sub-sub-div{
+/* .sub-sub-div{
   display: none;
   margin-top: 17px;
 }
@@ -102,4 +153,4 @@ label:hover .fas
 .mini-projects{
   padding: 0;
   font-size: 17px;
-}
+} */

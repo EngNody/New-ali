@@ -21,7 +21,7 @@ const Header = () => {
     
       <header className="hide-when-mobile ali">
         <h1>
-          <Link to="/">c4a.dev</Link>
+          <Link to="/" className={"logo"}>c4a.dev</Link>
         </h1>
         {/* <button
           onClick={() => {
@@ -149,7 +149,7 @@ const Header = () => {
       </header>
 
 
-      <header className="show-when-mobile ali">
+    {/*  <header className="show-when-mobile ali">
         <h1>c4a.dev</h1>
         <label className="absolute" htmlFor="burger">
           <i className="fas fa-bars" />
@@ -216,7 +216,7 @@ const Header = () => {
             </ul>
           </div>
         </div>
-      </header>
+      </header>*/}
     </div>
   );
 };

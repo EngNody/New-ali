@@ -19,14 +19,26 @@
 }
 
 
-@media (max-width: 800px) {
-  .show-when-mobile {
-    /* display: block; */
+.logo {
+  animation: logoani 5s infinite;
+}
+
+@keyframes logoani {
+
+  0%,
+  100% {
+    opacity: 0.5;
   }
-  
-  .hide-when-mobile {
-    /* display: none; */
+
+  50% {
+    letter-spacing: 7px;
+    opacity: 1;
   }
+}
+
+
+.logo:hover {
+  font-size: x-large !important;
 }
 
 

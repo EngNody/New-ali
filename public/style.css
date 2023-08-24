@@ -17,7 +17,7 @@
    1.  ul class .flex
 ================ */
 
-i ,p ,h6{
+i ,p ,h6,ul li a{
   -webkit-user-select:none ;
   user-select: none;
 }
