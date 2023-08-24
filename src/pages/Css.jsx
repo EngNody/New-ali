@@ -1,5 +1,6 @@
 import Header from "../comp/header";
 import Footer from "../comp/Footer";
+import Loading from '../comp/loading';
 import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -18,15 +19,7 @@ const Css = () => {
   console.log(user)
 
   if (loading) {
-    return (
-      <div>
-      <Header/>
-      <main>
-      <h2>Loading ...............</h2>
-      </main>
-      <Footer/>
-      </div>
-    );
+    return (<Loading />);
   }
 
   if (!user) {

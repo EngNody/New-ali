@@ -27,10 +27,9 @@
 /* ==============
   Light mode
 =================*/
-.Light h5,.Light h1,.Light h2,time{
+.Light h5,.Light h1,.Light h2,.Light time,.Light p,.Light h6{
   color: black !important;
 }
-
 
 
 /* ==============
@@ -38,7 +37,7 @@
 =================*/
 
 .Dark {
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.87) !important;
   background-color: #242424;
 }
 

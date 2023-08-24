@@ -20,9 +20,81 @@ const Signin = () => {
   const [showform, setshowform] = useState("");
   const navigate = useNavigate();
 
+  
+// function reset password
+const resetpassbtn = () => {
+  // eo.preventDefault();
+      
+  sendPasswordResetEmail(auth, resetpass)
+.then(() => {
+setshowsendemail(true);
+console.log(resetpass)
+// Password reset email sent!
+// ..
+})
+.catch((error) => {
+const errorCode = error.code;
+console.log(errorCode)
+const errorMessage = error.message;
+console.log(errorMessage)
+// ..
+});
+}
+
+// function sign in btn
+const signinbtn = (eo) => {
+  eo.preventDefault();
+  signInWithEmailAndPassword(auth, email, password)
+.then((userCredential) => {
+// Signed in 
+const user = userCredential.user;
+console.log(user)
+navigate("/");
+
+// ...
+})
+.catch((error) => {
+// ali write codes with errorcode
+const errorCode = error.code;
+console.log(errorCode)
+// i`m write codes with errorcode
+const errorMessage = error.message;
+console.log(errorMessage)
+// console.log(errorMessage)
+
+sethaserror(true)
+// setfirebaseerror(errorMessage)
+
+switch (errorCode) {
+case "auth/invalid-email":
+setfirebaseerror("Wrong Email")
+break; 
+case "auth/user-not-found":
+setfirebaseerror("Email Not found")
+break; 
+case "auth/wrong-password":
+setfirebaseerror("Wrong Password")
+break; 
+case "auth/weak-password":
+setfirebaseerror("Weak Password")
+break; 
+case "auth/email-already-in-use":
+setfirebaseerror("email-already-in-use")
+break; 
+case "auth/too-many-requests":
+setfirebaseerror("Too-many-requests , Please try again later !!!")
+break; 
+default:
+setfirebaseerror("Please check Your Email & Password")
+break;
+}
+// { true && <h1>Error {errorCode}</h1>} you can write errorMessage here not in p element down (block scoop)
+});
+}
+
 
   return (
-    <>
+    <div>
       <Helmet>
         <title>Signin</title>
       </Helmet>
@@ -40,23 +112,8 @@ const Signin = () => {
       setresetpass(eo.target.value)
     }}
     />
-    <button onClick={(eo) => {
-      eo.preventDefault();
-      
-      sendPasswordResetEmail(auth, resetpass)
-  .then(() => {
-    setshowsendemail(true);
-    console.log(resetpass)
-    // Password reset email sent!
-    // ..
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    console.log(errorCode)
-    const errorMessage = error.message;
-    console.log(errorMessage)
-    // ..
-  });
+    <button onClick={() => {
+      resetpassbtn()
     }} >Reset password</button>
     { showsendemail && <p className="check-email">Please check your email to reset your email</p>}
     </form>
@@ -74,60 +131,14 @@ const Signin = () => {
             setpassword(eo.target.value)
           }}/>
           <button onClick={(eo) => {
-            eo.preventDefault();
-            signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    console.log(user)
-    navigate("/");
-
-    // ...
-  })
-  .catch((error) => {
-    // ali write codes with errorcode
-    const errorCode = error.code;
-    console.log(errorCode)
-    // i`m write codes with errorcode
-    const errorMessage = error.message;
-    console.log(errorMessage)
-    // console.log(errorMessage)
-
-    sethaserror(true)
-    // setfirebaseerror(errorMessage)
-
-    switch (errorCode) {
-      case "auth/invalid-email":
-        setfirebaseerror("Wrong Email")
-        break; 
-         case "auth/user-not-found":
-          setfirebaseerror("Email Not found")
-          break; 
-         case "auth/wrong-password":
-        setfirebaseerror("Wrong Password")
-        break; 
-        case "auth/weak-password":
-          setfirebaseerror("Weak Password")
-          break; 
-        case "auth/email-already-in-use":
-          setfirebaseerror("email-already-in-use")
-          break; 
-        case "auth/too-many-requests":
-          setfirebaseerror("Too-many-requests , Please try again later !!!")
-          break; 
-      default:
-        setfirebaseerror("Please check Your Email & Password")
-        break;
-    }
-    // { true && <h1>Error {errorCode}</h1>} you can write errorMessage here not in p element down (block scoop)
-  });
+            signinbtn(eo)
           }}>Sign in</button>
           <p className="account">
             Don't hava an account <Link to="/signup"> Sign-up</Link>
           </p>
           {haserror && <h2>{firebaseerror}</h2>}
 
-          <p className="forget-pass" onClick={(eo) => {
+          <p className="forget-pass" onClick={() => {
             setshowform("showforgotpassword")
           }}>Forget Password ?</p>
         </form>
@@ -135,7 +146,7 @@ const Signin = () => {
 
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

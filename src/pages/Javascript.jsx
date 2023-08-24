@@ -1,5 +1,6 @@
 import Header from "../comp/header";
 import Footer from "../comp/Footer";
+import Loading from '../comp/loading';
 import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from 'react';
@@ -17,6 +18,11 @@ const Javascript = () => {
       navigate("/signin")
     }
   } , [user])
+
+  if (loading) {
+    return (<Loading />);
+  }
+
   return (
     <>
       <Helmet>

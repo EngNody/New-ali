@@ -1,6 +1,7 @@
 import Header from "../comp/header";
 import Footer from "../comp/Footer";
-import MainContent from "../comp/MainContent";
+import Loading from '../comp/loading';
+// import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -27,17 +28,21 @@ const Profile = () => {
     
   });
 
-  if (loading) {
-    return (
-      <div>
-        <Header />
-        <main>
-          <h2>Loading.......................</h2>
-        </main>
 
-        <Footer />
-      </div>
-    );
+  // function delete btn 
+const deletebtn = () => {
+  deleteUser(user).then(() => {
+    // 
+    console.log("User deleted.")
+  }).catch((error) => {
+    // An error ocurred
+    console.log(error.message)
+  });
+}
+
+
+  if (loading) {
+    return (<Loading />);
   }
 
   if (error) {
@@ -67,15 +72,19 @@ const Profile = () => {
           flex-direction: column;
           align-items: flex-start;
         }
-
+        .fa-heart{
+          margin-left: 20px;
+          color: red
+        }
         
         `}</style>
+
         </Helmet>
         <Header />
 
         <main>
     <div className="ddd">
-          <h6>UserName: {user.displayName}</h6>
+          <h6>UserName: {user.displayName} <span><i className="fa-solid fa-heart"></i></span></h6>
           <h6>Email: {user.email}</h6>
       
             <h6>
@@ -89,14 +98,7 @@ const Profile = () => {
             </h6>
     </div>
           <button onClick={() => {
-
-            deleteUser(user).then(() => {
-              // 
-              console.log("User deleted.")
-            }).catch((error) => {
-              // An error ocurred
-              console.log(error.message)
-            });
+            deletebtn()
           }} className="delete">Delete account</button>
         </main>
         <Footer />

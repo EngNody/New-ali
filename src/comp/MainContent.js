@@ -4,7 +4,9 @@ import "./MainContent.css";
 const MainContent = ({ pageName }) => {
   return (
     <main>
-      {pageName}
+    <p>
+    {pageName}
+    </p>
       <br />
     </main>
   );

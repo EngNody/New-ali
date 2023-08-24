@@ -1,12 +1,12 @@
 import Header from "../comp/header";
 import Footer from "../comp/Footer";
+import Loading from '../comp/loading';
 // import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 import { Link } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
-import ReactLoading from 'react-loading';
 
 
 const Home = () => {
@@ -17,25 +17,7 @@ const Home = () => {
 
   
   if (loading) {
-    return (
-      <div>
-      <Header/>
-      <main>
-    {/*  <h2>Loading ...............</h2> */}
-
-    {/* <div>
-    <ReactLoading type="spin" color="red" height={'20%'} width={'10%'} />
-        </div>
-        and npm uninstall react-loading in terminal */}
-
-        <div className="page-loading"></div>
-
-
-
-      </main>
-      <Footer/>
-      </div>
-    );
+    return (<Loading />);
   }
 
   if (!user) {
@@ -44,13 +26,18 @@ const Home = () => {
         <Helmet>
           <title>HOME Page</title>
           <meta name="description" content="HOMEEEEEEEEEEEE" />
-        </Helmet>
+          <style type="text/css">{` 
+          .titlesignin{
+            color:red
+          }
+        `}</style>
+          </Helmet>
         <Header />
   
           <main>
             <p className="pls">
               Please{" "}
-              <Link style={{ fontSize: "30px" }} to="/signin">
+              <Link style={{ fontSize: "30px" }} to="/signin" className="titlesignin">
                 sign in
               </Link>{" "}
               to continue... <span>🧡</span>
@@ -100,11 +87,13 @@ const Home = () => {
 
           <p>We send you an email to vertify your Account</p>
           <button 
-          onClick={sendEmailVerification(auth.currentUser)
+          onClick={() => {
+            sendEmailVerification(auth.currentUser)
             .then(() => {
               // Email verification sent!
               // ...
             })
+          }
           } className="delete">Send Email</button>          </main>              
 
       
