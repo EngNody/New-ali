@@ -9,6 +9,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
 import Moment from "react-moment";
 import {  deleteUser } from "firebase/auth";
+import Erroe404 from '../comp/404';
+
 
 const Profile = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -17,6 +19,10 @@ const Profile = () => {
   useEffect(() => {
     if (!user && !loading) {
       navigate("/");
+    }
+
+    if (error) {
+      return (<Erroe404 />);
     }
 
     if (user) {

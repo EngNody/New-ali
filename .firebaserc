@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "courses4arab-b3881"
-  }
+    "default": "courses4arab-b3881",
+    "build": "new-ali",
+    "ali project": "new-ali"
+  },
+  "targets": {},
+  "etags": {}
 }

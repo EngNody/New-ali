@@ -1,6 +1,7 @@
 import Header from "../comp/header";
 import Footer from "../comp/Footer";
 import Loading from '../comp/loading';
+import Erroe404 from '../comp/404';
 import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from 'react';
@@ -17,7 +18,13 @@ const About = () => {
     if (!user && !loading) {
       navigate("/signin")
     }
-  } , [user])
+  })
+
+    // } , [user])
+
+if (error) {
+  return (<Erroe404 />);
+}
 
   if (loading) {
     return (<Loading />);

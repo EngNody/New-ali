@@ -22,6 +22,10 @@ i ,p ,h6,ul li a{
   user-select: none;
 }
  
+header.hide-when-mobile h1{
+  width: 155px !important;
+  padding: 20px 10px !important;
+}
 
 
 .flex {

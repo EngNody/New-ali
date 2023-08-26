@@ -13,13 +13,16 @@ import {  signOut } from "firebase/auth";
 
 
 const Header = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const { theme, toggleTheme } = useContext(ThemeContext);
+
+  
   return (
     <div className="myheader">
     
       <header className="hide-when-mobile ali">
+      {/*style={{width: "155px" ,padding: "20px 10px !important"}}*/}
         <h1>
           <Link to="/" className={"logo"}>c4a.dev</Link>
         </h1>

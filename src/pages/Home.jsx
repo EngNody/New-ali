@@ -1,6 +1,7 @@
 import Header from "../comp/header";
 import Footer from "../comp/Footer";
 import Loading from '../comp/loading';
+import Erroe404 from '../comp/404';
 // import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -12,13 +13,15 @@ import { sendEmailVerification } from "firebase/auth";
 const Home = () => {
   const [user, loading, error] = useAuthState(auth);
 
-
-
-
   
   if (loading) {
     return (<Loading />);
   }
+
+  if (error) {
+    return (<Erroe404 />);
+  }
+
 
   if (!user) {
     return (
@@ -28,7 +31,7 @@ const Home = () => {
           <meta name="description" content="HOMEEEEEEEEEEEE" />
           <style type="text/css">{` 
           .titlesignin{
-            color:red
+            color:teal
           }
         `}</style>
           </Helmet>

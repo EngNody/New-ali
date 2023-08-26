@@ -42,8 +42,15 @@ p,button,a{
   width: 130px;
 }
 
+.not-found .wave-message p{
+    font-size: 2rem !important;
+  }
 
-
+  .not-found .wave-lost {
+    top: 30%  !important;
+    left: 30% !important;
+    font-size: 13rem !important;
+  }
 
 
 
