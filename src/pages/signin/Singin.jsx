@@ -1,14 +1,14 @@
-import Header from "../comp/header";
-import Footer from "../comp/Footer";
+import Header from "../../comp/header";
+import Footer from "../../comp/Footer";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../firebase/config';
+import { auth } from '../../firebase/config';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './signin.css'
 import { sendPasswordResetEmail } from "firebase/auth";
-
+import Modal from '../../shared/modal'
 
 const Signin = () => {
   const [email, setemail] = useState("");
@@ -17,8 +17,10 @@ const Signin = () => {
   const [haserror, sethaserror] = useState(false);
   const [firebaseerror, setfirebaseerror] = useState("");
   const [showsendemail, setshowsendemail] = useState(false);
-  const [showform, setshowform] = useState("");
+  // const [showform, setshowform] = useState("");
   const navigate = useNavigate();
+
+  // const [showmodule, setshowmodule] = useState(false);
 
   
 // function reset password
@@ -92,6 +94,19 @@ break;
 });
 }
 
+// level3
+const [showmodal, setshowmodal] = useState(false);
+const forgetpassword = () => {
+  setshowmodal(true)
+}
+
+const closemodal = () => {
+  
+setshowmodal(false)
+}
+
+
+
 
   return (
     <div>
@@ -102,21 +117,37 @@ break;
 
       <main>
       
-    <form className={`forgot-password ${showform}`}>
-    <div className="close" onClick={() => {
-      setshowform(" ")
-    }}><i className="fa-solid fa-xmark"></i></div>
+      {/* <form className={`ourmodal ${showform}`}> */}
+    
+    { showmodal && 
+     <Modal closemodal={closemodal} >
 
-    <input required placeholder=" E-mail : " type="email" 
-    onChange={(eo) => {
-      setresetpass(eo.target.value)
-    }}
-    />
-    <button onClick={() => {
-      resetpassbtn()
-    }} >Reset password</button>
-    { showsendemail && <p className="check-email">Please check your email to reset your email</p>}
-    </form>
+     <div className="parent-of-module">
+<form className={`ourmodal`}>
+<div className="close" onClick={() => {
+  // setshowform(" ")
+   setshowmodal(false);
+
+}}><i className="fa-solid fa-xmark"></i></div>
+
+<input required placeholder=" E-mail : " type="email" 
+onChange={(eo) => {
+  setresetpass(eo.target.value)
+}}
+/>
+<button onClick={() => {
+  resetpassbtn()
+}} >Reset password</button>
+{ showsendemail && <p className="check-email">Please check your email to reset your email</p>}
+</form> 
+</div>
+
+
+     </Modal>
+    
+    }
+    
+  
 
 
 
@@ -139,7 +170,9 @@ break;
           {haserror && <h2>{firebaseerror}</h2>}
 
           <p className="forget-pass" onClick={() => {
-            setshowform("showforgotpassword")
+            // setshowform("showforgotpassword")
+            forgetpassword()
+            setshowmodal(true)
           }}>Forget Password ?</p>
         </form>
 
@@ -150,4 +183,15 @@ break;
   );
 };
 
+
+
+
+
 export default Signin;
+
+
+
+
+
+
+

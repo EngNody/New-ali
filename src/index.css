@@ -20,7 +20,7 @@ body {
   text-decoration: none;
   list-style: none;
 
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
 }
 
 html {
@@ -36,6 +36,7 @@ html {
 
 main{
   flex-direction: column;
+  line-height: 37px;
 
 }
 
@@ -48,6 +49,21 @@ h1 {
   font-size: 25px;
 }
 
+main{
+  color: #1b1b1b;
+
+  min-height: calc(100vh - 133px);
+
+  font-size: 30px;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  text-align: center;
+}
+
 
 /* ==========================
 Level2 (Sign-in - Sign-up)
@@ -55,6 +71,7 @@ Level2 (Sign-in - Sign-up)
 form{
   display: flex;
   flex-direction: column;
+
 }
 input{
   margin-bottom: 18px;

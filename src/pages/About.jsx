@@ -12,7 +12,7 @@ import { auth } from '../firebase/config';
 
 const About = () => {
   const [user, loading, error] = useAuthState(auth);
-  const navigate = useNavigate("Hi User");
+  const navigate = useNavigate();
   useEffect(() => {
     console.log("hiiiiiiiiii")
     if (!user && !loading) {

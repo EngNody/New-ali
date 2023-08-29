@@ -76,3 +76,23 @@ Icon (sun & moon)
 .Dark .fa-moon {
   display: none;
 }
+/* ======================
+          edit page
+========================= */
+.Light .title-input,.Light .fa-pen-to-square,.Light .parent-time label,.Light .one-task li{
+  color: black;
+  -webkit-user-select:none;
+  user-select: none;
+}
+
+.home .all-tasks .one-task .time {
+ color: rgb(19, 125, 218) !important;
+}
+
+
+
+
+
+
+
+

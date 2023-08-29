@@ -1,6 +1,10 @@
+
+
 import Header from "../comp/header";
 import Footer from "../comp/Footer";
 import Loading from '../comp/loading';
+import Erroe404 from '../comp/404';
+
 import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -20,6 +24,10 @@ const Css = () => {
 
   if (loading) {
     return (<Loading />);
+  }
+
+  if (error) {
+    return (<Erroe404 />);
   }
 
   if (!user) {

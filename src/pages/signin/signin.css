@@ -1,6 +1,19 @@
 
 
-.forgot-password{
+.parent-of-module{
+  /* border: 2px solid red; */
+position: fixed;
+top: 0;
+left: 0;
+right: 0;bottom: 0;
+/* background-color: #333333e2; */
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.ourmodal{
 background-color: whitesmoke;
 width: 400px;
 height: 333px;
@@ -9,18 +22,18 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: fixed;
-/* display: none; */
-scale: 0;
-transform: translateY(-100vh);
+/* scale: 0;
+transform: translateY(-100vh); */
 transition: all 1s;
+scale: 1;
+transform: translateY(0);
 }
 
-.showforgotpassword{
-/* display: flex; */
+/* .showforgotpassword{
 scale: 1;
 transform: translateY(0);
 
-}
+} */
 
 .forget-pass{
   font-size: 19px;
@@ -61,7 +74,9 @@ transform: translateY(0);
   line-height: 35px;
 }
 
-
+.dadmodal{
+  text-align: left;
+}
 
 
 
