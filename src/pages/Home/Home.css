@@ -91,10 +91,29 @@ margin: 2em;
 font-size: 14px;
 }
 
+.home .submit{
+  margin-top: 15px;
+}
+/* ============================================= */
+          /* {modal} */
+/* ============================================= */
 
+.home .ourmodal li{
+  font-size: 13px;
+  color: #333;
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-bottom: -8px;
+}
+.home .ourmodal .add{
+  margin-left: 10px;
+}
 
-
-
+/* .home .ourmodal .newtask{
+  border: 2px solid red;
+  height: 100px;
+  overflow: auto;
+} */
 
 
 

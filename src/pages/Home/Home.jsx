@@ -15,6 +15,15 @@ import { useState } from 'react';
 
 
 const Home = () => {
+  const [array, setarray] = useState([])
+  const [subtask, setsubtask] = useState("")
+
+  const addbtn = () => {
+    array.push(subtask)
+    console.log(array)
+    setsubtask("")
+  }
+
   const [user, loading, error] = useAuthState(auth);
 
 
@@ -195,13 +204,26 @@ setshowmodal(false)
   <div className="dadmodal">
       <input type="text" placeholder="Add title" typeof="email"/>
     <div>
-        <input type="text" placeholder="Details" typeof="email"/>
-        <button  onClick={(eo) =>{
+        <input type="text"
+        onChange={(eo) => {
+          setsubtask(eo.target.value)
+          }}
+         placeholder="Details" typeof="email" value={subtask}/>
+
+        <button className="add"  onClick={(eo) =>{
         eo.preventDefault();
+        addbtn()
       } }>Add</button>
         
     </div>
-      <button onClick={(eo) =>{
+
+
+    <ul className="newtask">
+    { array.map((item) => (<li key={item}>{item}</li>))}
+    </ul>
+
+
+      <button className="submit" onClick={(eo) =>{
         eo.preventDefault();
       } }>Submit</button>
     

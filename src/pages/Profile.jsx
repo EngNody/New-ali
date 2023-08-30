@@ -20,11 +20,12 @@ const Profile = () => {
     if (!user && !loading) {
       navigate("/");
     }
-
+  })
+  
     if (error) {
       return (<Erroe404 />);
     }
-
+  
     if (user) {
       if (!user.emailVerified) {
         navigate("/");
@@ -32,7 +33,7 @@ const Profile = () => {
     }
 
     
-  });
+// });
 
 
   // function delete btn 
