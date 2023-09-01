@@ -20,7 +20,7 @@ width: 400px;
 height: 333px;
 border-radius: 12px;
 display: flex;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 position: fixed;
 /* scale: 0;
@@ -28,7 +28,7 @@ transform: translateY(-100vh); */
 {/* transition: all 1s; */}
 scale: 1;
 transform: translateY(0);
-{/* overflow: auto; */}
+overflow: auto;
 
 }
 

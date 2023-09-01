@@ -12,11 +12,16 @@ import { sendEmailVerification } from "firebase/auth";
 import './Home.css'
 import Modal from "../../shared/modal";
 import { useState } from 'react';
+import { doc, setDoc } from "firebase/firestore"; 
+import { db } from '../../firebase/config';
+import ReactLoading from 'react-loading';
 
 
 const Home = () => {
   const [array, setarray] = useState([])
   const [subtask, setsubtask] = useState("")
+  const [subtitle, setsubtitle] = useState("")
+  const [spinloading, setspinloading] = useState(false)
 
   const addbtn = () => {
     array.push(subtask)
@@ -202,7 +207,12 @@ setshowmodal(false)
      {showmodal && <Modal closemodal={closemodal} >
 
   <div className="dadmodal">
-      <input type="text" placeholder="Add title" typeof="email"/>
+      <input type="text" placeholder="Add title" typeof="email"
+              value={subtitle}
+      onChange={(eo) => {
+        setsubtitle(eo.target.value)
+          }}
+      />
     <div>
         <input type="text"
         onChange={(eo) => {
@@ -223,12 +233,40 @@ setshowmodal(false)
     </ul>
 
 
-      <button className="submit" onClick={(eo) =>{
+      <button className="submit" onClick={async (eo) =>{
         eo.preventDefault();
-      } }>Submit</button>
+        setspinloading(true)
+    console.log("waiting...........")
+    // await setDoc(doc(db, "Ali Hassan", "test123"), {
+    // way to make random number instead "test123"
+console.log(user)
+    const taskid = new Date().getTime()
+      await setDoc(doc(db, user.uid , `${taskid}` ), {
+  title: subtitle,
+  details : array,
+  id: taskid,
+  // websites: ["c4a.dev", "courses4arab.com"]
+});  
+
+console.log("done...........")
+
+setspinloading(false)
+setsubtitle("")
+setarray([])
+setshowmodal(false)
+// closemodal()   its my true way
+
+      } }>
+
+    {spinloading ?  <ReactLoading type={"spin"} color={"white"} height={20} width={20} /> : "Submit"}  
+
+      </button>
     
   </div>
-     </Modal> }            
+     </Modal> }     
+
+
+     <p className="task-message">Task added successfully  <i className="fa-regular fa-circle-check" /></p>       
             </main> 
         
           <Footer />
