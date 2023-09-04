@@ -13,7 +13,8 @@ import ThemeContext from "./context/ThemeContext";
 import Signin from './pages/signin/Singin.jsx';
 import Signup from './pages/Signup';
 import Erroe404 from './comp/404';
-import Edittask from './pages/edit-task/edit-task.jsx'
+// import Edittask from './pages/edit-task/edit-task.jsx'
+import EditTask from "./pages/edit-task/edit-task.jsx";
 
 
 const router = createBrowserRouter([
@@ -53,8 +54,8 @@ const router = createBrowserRouter([
     element: <Profile />,
   },
   {
-    path: "/edit-task",
-    element: <Edittask />,
+    path: "/edit-task/:appsameid",
+    element: <EditTask />,
   },
 ]);
 

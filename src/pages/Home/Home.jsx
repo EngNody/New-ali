@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 
 import Header from "../../comp/header";
@@ -10,38 +11,89 @@ import { auth } from '../../firebase/config';
 import { Link } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
 import './Home.css'
-import Modal from "../../shared/modal";
 import { useState } from 'react';
 import { doc, setDoc } from "firebase/firestore"; 
 import { db } from '../../firebase/config';
-import ReactLoading from 'react-loading';
+import TaskModal from './modal'
+import Alltaskssection from './Alltaskssection';
+
 
 
 const Home = () => {
-  const [array, setarray] = useState([])
-  const [subtask, setsubtask] = useState("")
-  const [subtitle, setsubtitle] = useState("")
-  const [spinloading, setspinloading] = useState(false)
-
-  const addbtn = () => {
-    array.push(subtask)
-    console.log(array)
-    setsubtask("")
-  }
-
   const [user, loading, error] = useAuthState(auth);
 
+  const [movemessage, setmovemessage] = useState(false)
 
-  // level3
+
+
+
+
+
+    // level3
+
+// =====================================
+//   functions of modal
+// =====================================
 const [showmodal, setshowmodal] = useState(false);
-// const forgetpassword = () => {
-//   setshowmodal(true)
-// }
+const [subtitle, setsubtitle] = useState("")
+const [spinloading, setspinloading] = useState(false)
+const [subtask, setsubtask] = useState("")
+const [array, setarray] = useState([])
+
 
 const closemodal = () => {
-  
-setshowmodal(false)
+  setsubtitle("")
+setarray([])
+  setshowmodal(false)
+  }
+
+const titleInput = (eo) => { setsubtitle(eo.target.value)}
+
+const detailsInput = (eo) => { setsubtask(eo.target.value)}
+
+const addbtn = (eo) => {
+  eo.preventDefault();
+if (!array.includes(subtask)) {
+
+  array.push(subtask)
+
 }
+  console.log(array)
+  setsubtask("")
+}
+
+const submitBtn = async (eo) => {
+  eo.preventDefault();
+  setspinloading(true)
+console.log("waiting...........")
+// await setDoc(doc(db, "Ali Hassan", "test123"), {
+// way to make random number instead "test123"
+console.log(user)
+const taskid = new Date().getTime()
+await setDoc(doc(db, user.uid , `${taskid}` ), {
+title: subtitle,
+details : array,
+id: taskid,
+completed:false,
+// websites: ["c4a.dev", "courses4arab.com"]
+});  
+
+console.log("done...........")
+
+setspinloading(false)
+setsubtitle("")
+setarray([])
+setshowmodal(false)
+// closemodal()   its my true way
+setmovemessage(true)
+setTimeout(() => {
+setmovemessage(false);
+// @ts-ignore
+}, "3000");
+}
+
+
+
   
   if (loading) {
     return (<Loading />)
@@ -147,51 +199,7 @@ setshowmodal(false)
 
           {/* show all tasks */}
 
-          <section dir="auto" className="all-tasks flex">
-            <article className="one-task">
-          <Link to={"/edit-task"}>
-                <h2>New Task</h2>
-                <ul>
-                  <li>Sup Task 1</li>
-                  <li>Sup Task 2</li>
-                </ul>
-            
-                <p className="time">a Day ago</p>
-          </Link>
-            </article>
-
-            <article dir="auto" className="one-task">
-              <h2>New Task</h2>
-              <ul>
-                <li>Sup Task 1</li>
-                <li>Sup Task 2</li>
-              </ul>
-
-              <p className="time">a Day ago</p>
-            </article>
-{/* 
-            <article dir="auto" className="one-task">
-              <h2>New Task</h2>
-              <ul>
-                <li>Sup Task 1</li>
-                <li>Sup Task 2</li>
-              </ul>
-
-              <p className="time">a Day ago</p>
-            </article>
-
-            <article dir="auto" className="one-task">
-              <h2>شراء جوافه</h2>
-              <ul>
-                <li>شراء جوافه 1</li>
-                <li>شراء جوافه 2</li>
-              </ul>
-
-              <p className="time">a Day ago</p>
-            </article> */}
-
-          </section>
-
+          <Alltaskssection user={user}  />
 
           {/* Add new task BTN */}
 <section>
@@ -204,69 +212,24 @@ setshowmodal(false)
   
 </section>
 
-     {showmodal && <Modal closemodal={closemodal} >
-
-  <div className="dadmodal">
-      <input type="text" placeholder="Add title" typeof="email"
-              value={subtitle}
-      onChange={(eo) => {
-        setsubtitle(eo.target.value)
-          }}
+     {showmodal && 
+     <TaskModal 
+     closemodal={closemodal}
+     titleInput={titleInput}
+     detailsInput={detailsInput}
+     addbtn={addbtn}
+     submitBtn={submitBtn}
+     spinloading={spinloading}
+     array={array}
+     subtask={subtask}
+     subtitle={subtitle}
       />
-    <div>
-        <input type="text"
-        onChange={(eo) => {
-          setsubtask(eo.target.value)
-          }}
-         placeholder="Details" typeof="email" value={subtask}/>
+     }     
 
-        <button className="add"  onClick={(eo) =>{
-        eo.preventDefault();
-        addbtn()
-      } }>Add</button>
-        
-    </div>
-
-
-    <ul className="newtask">
-    { array.map((item) => (<li key={item}>{item}</li>))}
-    </ul>
-
-
-      <button className="submit" onClick={async (eo) =>{
-        eo.preventDefault();
-        setspinloading(true)
-    console.log("waiting...........")
-    // await setDoc(doc(db, "Ali Hassan", "test123"), {
-    // way to make random number instead "test123"
-console.log(user)
-    const taskid = new Date().getTime()
-      await setDoc(doc(db, user.uid , `${taskid}` ), {
-  title: subtitle,
-  details : array,
-  id: taskid,
-  // websites: ["c4a.dev", "courses4arab.com"]
-});  
-
-console.log("done...........")
-
-setspinloading(false)
-setsubtitle("")
-setarray([])
-setshowmodal(false)
-// closemodal()   its my true way
-
-      } }>
-
-    {spinloading ?  <ReactLoading type={"spin"} color={"white"} height={20} width={20} /> : "Submit"}  
-
-      </button>
-    
-  </div>
-     </Modal> }     
-
-
-     <p className="task-message">Task added successfully  <i className="fa-regular fa-circle-check" /></p>       
+     <p className="show-message"  
+     style={{right :movemessage? "20px": "-100vw"}}
+     
+     >Task added successfully  <i className="fa-regular fa-circle-check" /></p>       
             </main> 
         
           <Footer />

@@ -52,13 +52,13 @@ const deletebtn = () => {
     return (<Loading />);
   }
 
-  if (error) {
-    return (
-      <div>
-        <p>Error: {error}</p>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div>
+  //       <p>Error: {error}</p>
+  //     </div>
+  //   );
+  // }
 
   if (user) {
     return (

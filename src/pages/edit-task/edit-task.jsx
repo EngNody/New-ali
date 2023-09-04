@@ -5,9 +5,37 @@ import './edit-task.css'
 import Header from './../../comp/header';
 import Footer from './../../comp/Footer';
 import { Helmet } from 'react-helmet-async';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase/config.js';
+import Loading from '../../comp/loading';
+// import Erroe404 from '../../comp/404';
+// @ts-ignore
+import Titlesection from './1-Titlesection'
+import SupTaskaSection from './2-SupTaskaSection';
+import Btnssections from './3-Btnssections';
+import { useParams } from 'react-router-dom';
 
 
 const EditTask = () => {
+
+  let { appsameid } = useParams();
+
+
+const [user, loading, error] = useAuthState(auth);
+
+if (loading) {
+  return (<Loading />)
+}
+
+if (error) {
+  // return (<Erroe404 />)
+    return <h1>Error : {error.message}</h1>
+
+}
+
+
+
+if (user) {
   return (
     <div>
       <Helmet>
@@ -21,46 +49,17 @@ const EditTask = () => {
 
 {/* Title */}
 
-<section className='title center'>
-  <h2>
-    <input value={"Front End Developer"} type="text" className='title-input center'/>
-    <i className="fa-regular fa-pen-to-square" />
-  </h2>
-</section>
+<Titlesection user={user} appsameid={appsameid}/>
 
 
 {/* Sup tasks section */}
 
-<section className='sub-task'>
-
-<div className='parent-time flex'>
-  <p className='time'>Created: 6 days ago</p>
-  <div>
-    <input id='checkbox' type="checkbox" />
-    <label htmlFor="checkbox">Completed </label>
-  </div>
-</div>
-
-<ul>
-<li className='card-task flex'>HTML <i className="fa-solid fa-trash" /></li>
-<li className='card-task flex'>CSS <i className="fa-solid fa-trash" /></li>
-<li className='card-task flex'>JAVA SCRIPT <i className="fa-solid fa-trash" /></li>
-<li className='card-task flex'>REACT <i className="fa-solid fa-trash" /></li>
-<li className='card-task flex'>CSS <i className="fa-solid fa-trash" /></li>
-<li className='card-task flex'>CSS <i className="fa-solid fa-trash" /></li>
-<li className='card-task flex'>CSS <i className="fa-solid fa-trash" /></li>
-</ul>
-
-
-</section>
+<SupTaskaSection user={user} appsameid={appsameid}/>
 
 
 {/* Add more btn && delete btn */}
 
-<section className='center allbtns flex'>
-  <button className='add-more-btn'>Add More <i className="fa-solid fa-plus" /></button>
-  <button className='delete'>Delete Task</button>
-</section>
+<Btnssections user={user} appsameid={appsameid}/>
 
 
 
@@ -69,7 +68,11 @@ const EditTask = () => {
 
 <Footer />
     </div>
-  );
+  );  
+}
+
+
+
 }
 
 export default EditTask;
