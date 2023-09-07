@@ -1,7 +1,6 @@
 import React from 'react';
-import Header from "./header";
-import Footer from "./Footer";
 import { Helmet } from "react-helmet-async";
+// import ReactLoading from 'react-loading';
 
 // import ReactLoading from 'react-loading';
 
@@ -10,7 +9,7 @@ const Loading = () => {
     <div>
 
       <Helmet>
-        <title>Signin</title>
+        {/* <title>Signin</title> */}
 
         <style type="text/css">
         {`
@@ -32,18 +31,39 @@ const Loading = () => {
         </style>
       </Helmet>
 
-    <Header/>
     <main>
-      <div className="page-loading"></div>
-        {/*  <h2>Loading ...............</h2> */}
+{/* ============================================================================================= */}
+        {/* to do animated circle loading */}
+{/* ============================================================================================= */}
+    {/* <div style={{ fill: "rgb(255, 255, 255)", height: 64, width: 64 }}>
+    
+    <svg className="icon-loading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <path transform="translate(-8 0)" d="M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12"> 
+    <animateTransform attributeName="transform" type="translate" values="-8 0; 2 0; 2 0;" dur="0.8s" repeatCount="indefinite" begin="0" keyTimes="0;.25;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8" calcMode="spline" />
+  </path>
+  <path transform="translate(2 0)" d="M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12"> 
+    <animateTransform attributeName="transform" type="translate" values="2 0; 12 0; 12 0;" dur="0.8s" repeatCount="indefinite" begin="0" keyTimes="0;.35;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8" calcMode="spline" />
+  </path>
+  <path transform="translate(12 0)" d="M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12"> 
+    <animateTransform attributeName="transform" type="translate" values="12 0; 22 0; 22 0;" dur="0.8s" repeatCount="indefinite" begin="0" keyTimes="0;.45;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8" calcMode="spline" />
+  </path>
+  <path transform="translate(24 0)" d="M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12"> 
+    <animateTransform attributeName="transform" type="translate" values="22 0; 32 0; 32 0;" dur="0.8s" repeatCount="indefinite" begin="0" keyTimes="0;.55;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8" calcMode="spline" />
+  </path>
+</svg>
 
-  {/* <div>
+</div> */}
+{/* ============================================================================================== */}
+
+      <div className="page-loading"></div>
+         {/* <h2>Loading ...............</h2> */}
+{/* 
+  <div>
   <ReactLoading type="spin" color="red" height={'20%'} width={'10%'} />
-      </div>
-      and npm uninstall react-loading in terminal */}
+      </div> */}
+    {/*   and npm uninstall react-loading in terminal */}
 
     </main>
-    <Footer/>
     </div>
   );
 }

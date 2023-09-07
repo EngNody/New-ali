@@ -48,6 +48,12 @@ h1 {
   padding: 20px;
   font-size: 25px;
 }
+.flex{
+  display: flex;
+  align-content: center ;
+  align-items: center ;
+}
+
 
 main{
   color: #1b1b1b;

@@ -42,20 +42,25 @@
   border: 2px solid antiquewhite;
   margin: 20px 20px;
   width: 300px;
-  height: 200px;
+  min-height: 135px;
   border-radius: 5px;
   transition: 0.2s;
   overflow: auto;
 position: relative;
 }
-
+.Light .home .all-tasks .one-task{
+  border: 2px solid rgba(0, 0, 0, 0.29);
+}
 .home .all-tasks .one-task:hover{
   border: 2px solid antiquewhite;
   border-left: 8px solid antiquewhite;
   cursor: pointer;
-
 }
-
+.Light .home .all-tasks .one-task:hover{
+  border: 2px solid rgba(0, 0, 0, 0.29);
+  border-left: 8px solid rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+}
 .home .all-tasks .one-task h2{
 font-size: 25px;
 }
@@ -116,8 +121,9 @@ font-size: 14px;
 }
 
 .home .ourmodal .newtask{
-  border: 2px solid red;
+  /* border: 2px solid red; */
   height: 100px; 
+  line-height: 1.7;
    overflow: auto;
   /* max-width: 300px;
     border: 2px solid blue;

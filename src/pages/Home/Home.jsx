@@ -3,17 +3,17 @@
 
 import Header from "../../comp/header";
 import Footer from "../../comp/Footer";
-import Loading from '../../comp/loading';
+// import Loading from '../../comp/loading';
 import Erroe404 from '../../comp/404';
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../../firebase/config';
+import { auth,db } from '../../firebase/config';
 import { Link } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
+// level3
 import './Home.css'
 import { useState } from 'react';
 import { doc, setDoc } from "firebase/firestore"; 
-import { db } from '../../firebase/config';
 import TaskModal from './modal'
 import Alltaskssection from './Alltaskssection';
 
@@ -95,9 +95,9 @@ setmovemessage(false);
 
 
   
-  if (loading) {
-    return (<Loading />)
-  }
+  // if (loading) {
+  //   return (<Loading />)
+  // }
 
   if (error) {
     return (<Erroe404 />)
@@ -204,7 +204,8 @@ setmovemessage(false);
           {/* Add new task BTN */}
 <section>
   
-  <button type="button" className="add-task-btn" onClick={() => {
+  <button type="button" className="add-task-btn"
+   onClick={() => {
     setshowmodal(true)
   }}>
     Add new task <i className="fa-solid fa-plus" />

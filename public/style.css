@@ -25,6 +25,7 @@ i ,p ,h6,ul li a{
 header.hide-when-mobile h1{
   width: 155px !important;
   padding: 20px 10px !important;
+  text-align: center;
 }
 
 
@@ -55,7 +56,7 @@ header.hide-when-mobile h1{
 ======================================== */
 
 .sub-ul {
-  display: none;
+  /* display: none; */
 
   position: absolute;
   top: 63px;
@@ -74,11 +75,11 @@ header.hide-when-mobile h1{
   left: 10px;
 }
 
-.sub-ul li {
+/* .sub-ul li {
   padding: 8px 0;
   font-size: 17px;
   border-bottom: 1px solid black;
-}
+} */
 
 .sub-ul li a:hover {
   color: cyan;
@@ -95,8 +96,8 @@ header.hide-when-mobile h1{
 
 .sub-sub-ul {
   position: absolute;
-  top: 80px;
-  left: 153px;
+  top: 124px;
+  left: -145px;
 
   border-top: 1px solid cyan;
 
@@ -107,7 +108,7 @@ header.hide-when-mobile h1{
 
   width: 150px;
 
-  display: none;
+  /* display: none; */
 }
 
 .mini-projects:hover .sub-sub-ul {

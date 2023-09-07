@@ -8,7 +8,7 @@ import Moment from "react-moment";
 // import Moment from 'react-moment';
 
 const Alltaskssection = ({ user }) => {
-console.log(user);
+// console.log(user);
 
 const [value, loading, error] = useCollection(collection(db, user.uid));
 
@@ -27,30 +27,29 @@ return <h1>Error</h1>;
 if (value) {
 return (
 <section className="all-tasks flex">
-{value.docs.map((item,i) => {
+{value.docs.map((item) => {
 
 
-  return (
-    <article dir="auto" className="one-task" key={i}>
-    <Link to={`/edit-task/${item.data().id}`}>
-        <h2>{item.data().title}</h2>
+    return (
+    <article dir="auto"  className="one-task" key={item.data().id} >
+    <Link to={`/edit-task/${item.data().id}`} >
+        <h2 >{item.data().title}</h2>
         <ul>
-          {item.data().details.map((item,i) => {
+          {/* {item.data().details.map((item) => {
             return(
-              <li  key={i} >{item}</li>
-              
+               <li key={item}>{item}</li>
             )
-          })}
+          })} */}
           {/* key={item.appsameid} */}
           {/* ========================================================= */}
           {/* to show only two element */}
-              {/* {item.data().details.map((item, index) => {
+              {item.data().details.map((item, index) => {
           if (index < 2) {
-            return <li> {item} </li>;
+            return <li key={item}> {item} </li>;
           } else {
             return false;
           }
-        })} */}
+        })}
 
 
           {/* ================================================== */}
@@ -65,9 +64,7 @@ return (
       </Link>
     </article>
   );
-}
-)
-}
+})}
 
 {/* ========================================================== */}
 
@@ -81,15 +78,6 @@ return (
         <p className="time">a Day ago</p>
       </article>
 
-        <article dir="auto" className="one-task">
-        <h2>New Task</h2>
-        <ul>
-          <li>Sup Task 1</li>
-          <li>Sup Task 2</li>
-        </ul>
-
-        <p className="time">a Day ago</p>
-      </article>
 
       <article dir="auto" className="one-task">
         <h2>شراء جوافه</h2>

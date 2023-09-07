@@ -45,10 +45,9 @@ const Header = () => {
           onClick={() => {
             toggleTheme(theme === "Light" ? "Dark" : "Light");
           }}
-          className="fa-solid fa-sun"
-        ></i>
+          className="fa-solid fa-sun"></i>
 
-        <ul className="flex">
+        <ul className="elementsulhead flex">
 
 
 

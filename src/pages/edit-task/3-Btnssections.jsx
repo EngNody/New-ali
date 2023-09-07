@@ -2,22 +2,36 @@ import React from 'react';
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import { db } from "../../firebase/config";
+// import Loading from 'react-loading';
+// import Erroe404 from '../../comp/404';
+import Loading from './../../comp/loading';
 
 
 
-const Btnssections = ({user,appsameid}) => {
+const Btnssections = ({user,deleteBTN}) => {
 
   const [value, loading, error] = useCollection(collection(db, user.uid));
 
-  console.log(error)
-  console.log(loading)
-  console.log(value)
 
+  if (loading) {
+    return (<Loading />)
+    // return (
+    //   <main>
+    //     <h1>Loading.........</h1>
+    //   </main>
+    // )
+  }
+
+  // if (error) {
+  //   return (<Erroe404 />)
+  // }
 
   return (
 <section className='center allbtns flex'>
-  <button className='add-more-btn'>Add More <i className="fa-solid fa-plus" /></button>
-  <button className='delete'>Delete Task</button>
+
+  <button onClick={(eo)=>{
+    deleteBTN(eo)
+  }} className='delete'>Delete Task</button>
 </section>
   );
 }

@@ -45,6 +45,113 @@
   font-size: x-large !important;
 }
 
+/* =======================================
+   1.1 sub HTML + css + JavaScript
+======================================== */
+.elementsulhead{
+  /* width: 40%; */
+  /* border: 2px solid blue; */
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+/* .elementsulhead li{
+  padding: 10px !important;
+  margin: 10px;
+} */
+
+.sub-ul {
+  display: none;
+  /* border: 2px solid blue; */
+
+  position: absolute;
+  top: 49px;
+  /* left: -15px; */
+  border-top: 1px solid cyan;
+
+  background-color: #1b1b1b;
+
+  border-radius: 5px;
+  /* padding: 5px; */
+
+  width: 170px;
+}
+
+.Light .sub-ul {
+background-color: #7d7a7a;
+}
+
+.sub-of-js {
+  left: 10px;
+}
+
+.sub-ul li {
+  padding: 8px 0;
+  font-size: 17px;
+  border-bottom: 1px solid black;
+}
+
+.Light .sub-ul li {
+  border-bottom: 1px solid white;
+}
+
+.sub-ul li a:hover {
+  color: cyan;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.main-list a {
+  padding: 10px;
+  /* border: 2px solid blue; */
+
+}
+
+.main-list:hover .sub-ul {
+  display: block;
+}
+
+
+.sub-ul a,.sub-sub-ul a{
+  width: 100% !important;
+  /* border: 2px solid red; */
+  display: block;
+  padding-left: 15px;
+}
+
+
+/* =======================================
+   1.2 sub sub of CSS
+======================================== */
+
+.sub-sub-ul {
+  position: absolute;
+  top: 124px;
+  left: -145px;
+  border-top: 1px solid cyan;
+  background-color: #1b1b1b;
+  border-radius: 5px;
+  /* padding: 5px; */
+  width: 150px;
+  display: none;
+  z-index: 100;
+  /* border: 2px solid red; */
+}
+
+.Light .sub-sub-ul {
+background-color: #7d7a7a;
+}
+
+.Light .sub-sub-ul li {
+  border-bottom: 1px solid white;
+}
+.Light .sub-sub-ul li:hover ,.Light .sub-ul li:hover {
+  border-bottom: 1px solid yellow;
+}
+.mini-projects:hover .sub-sub-ul {
+  display: block;
+}
+
 
 
 
