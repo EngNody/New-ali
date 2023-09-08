@@ -3,7 +3,7 @@
 
 import Header from "../../comp/header";
 import Footer from "../../comp/Footer";
-// import Loading from '../../comp/loading';
+import Loading from '../../comp/loading';
 import Erroe404 from '../../comp/404';
 import { Helmet } from "react-helmet-async";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { doc, setDoc } from "firebase/firestore"; 
 import TaskModal from './modal'
 import Alltaskssection from './Alltaskssection';
+// import { Loading } from '../../comp/loading';
 
 
 
@@ -95,9 +96,11 @@ setmovemessage(false);
 
 
   
-  // if (loading) {
-  //   return (<Loading />)
-  // }
+  if (loading) {
+  <header/>
+    return (<Loading />);
+  <Footer/>
+  }
 
   if (error) {
     return (<Erroe404 />)

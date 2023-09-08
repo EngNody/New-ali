@@ -1,6 +1,9 @@
 import React from 'react';
 import { Helmet } from "react-helmet-async";
 // import ReactLoading from 'react-loading';
+import Header from './header';
+import Footer from './Footer';
+// import ReactLoading from 'react-loading';
 
 // import ReactLoading from 'react-loading';
 
@@ -19,8 +22,9 @@ const Loading = () => {
             border-radius: 50%;
             border-top: 5px solid #dc3545;
             border-right: 5px solid #dc3545;
-            
+            color:red;
             animation: mymove 1s infinite linear;
+            z-index:100;
           }
           
           @keyframes mymove{
@@ -30,7 +34,7 @@ const Loading = () => {
         `}
         </style>
       </Helmet>
-
+<Header/>
     <main>
 {/* ============================================================================================= */}
         {/* to do animated circle loading */}
@@ -57,13 +61,14 @@ const Loading = () => {
 
       <div className="page-loading"></div>
          {/* <h2>Loading ...............</h2> */}
-{/* 
-  <div>
+
+  {/* <div>
   <ReactLoading type="spin" color="red" height={'20%'} width={'10%'} />
       </div> */}
     {/*   and npm uninstall react-loading in terminal */}
 
     </main>
+    <Footer/>
     </div>
   );
 }

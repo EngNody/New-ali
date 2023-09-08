@@ -7,7 +7,7 @@ import Footer from './../../comp/Footer';
 import { Helmet } from 'react-helmet-async';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../../firebase/config.js';
-// import Loading from '../../comp/loading';
+import Loading from '../../comp/loading';
 // import Erroe404 from '../../comp/404';
 // @ts-ignore
 import Titlesection from './1-Titlesection'
@@ -15,7 +15,9 @@ import SupTaskaSection from './2-SupTaskaSection';
 import Btnssections from './3-Btnssections';
 import { useNavigate, useParams } from 'react-router-dom';
 import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import ReactLoading from 'react-loading';
 // import ReactLoading from 'react-loading';
+// import Loading from 'react-loading';
 
 
 
@@ -81,14 +83,14 @@ const deleteBTN = async (eo) => {
   setshowData(true)
   await deleteDoc(doc(db, user.uid, appsameid));
   navigate("/" , { replace:true });
-
+  // navigate("/");
 }
 
 
 // ===========================================
-// if (loading) {
-//   return (<Loading />)
-// }
+if (loading) {
+  return (<Loading />)
+}
 
 if (error) {
   // return (<Erroe404 />)
@@ -109,11 +111,17 @@ if (user) {
 <Header />
 
 { showData ? (
-  <main>
   
-  {/* <ReactLoading type={"spin"} color={"white"} height={77} width={77} /> */}
-  </main>
-) : (
+  <main>
+            <ReactLoading
+              type={"spin"}
+              color={"white"}
+              height={77}
+              width={77}
+            />
+          </main>
+
+  ) : (
   <div className='edit-task'>
 
 {/* Title */}

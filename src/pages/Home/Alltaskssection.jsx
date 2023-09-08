@@ -45,7 +45,8 @@ return (
           {/* to show only two element */}
               {item.data().details.map((item, index) => {
           if (index < 2) {
-            return <li key={item}> {item} </li>;
+            return(
+              <li key={item}> {item} </li>)
           } else {
             return false;
           }

@@ -36,7 +36,9 @@ const TaskModal = ({closemodal ,titleInput ,detailsInput
       </ul>
     
     
-        <button className="submit" onClick={async (eo) =>{
+        <button className="submit" 
+        onClick={async (eo) =>{
+          
           submitBtn(eo)
         } }>
     

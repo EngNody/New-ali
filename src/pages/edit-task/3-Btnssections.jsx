@@ -13,19 +13,11 @@ const Btnssections = ({user,deleteBTN}) => {
   const [value, loading, error] = useCollection(collection(db, user.uid));
 
 
-  if (loading) {
-    return (<Loading />)
-    // return (
-    //   <main>
-    //     <h1>Loading.........</h1>
-    //   </main>
-    // )
-  }
-
   // if (error) {
   //   return (<Erroe404 />)
   // }
 
+if (value) {
   return (
 <section className='center allbtns flex'>
 
@@ -33,7 +25,10 @@ const Btnssections = ({user,deleteBTN}) => {
     deleteBTN(eo)
   }} className='delete'>Delete Task</button>
 </section>
-  );
+  );  
+}
+
+
 }
 
 export default Btnssections;

@@ -150,11 +150,10 @@ color: rgb(237, 181, 181);
 }
 
 
-/* path[Attributes Style] {
-  transform: translate(21.284, 0);
-  d: path("M 4 12 A 4 4 0 0 0 4 20 A 4 4 0 0 0 4 12");
+/* try to response loading circle failed */
+/* .Light .blackloading{
+color: black !important;
 }
-user agent stylesheet
-:not(svg) {
-  transform-origin: 0px 0px;
+.Dark .blackloading{
+  color: white;
 } */
