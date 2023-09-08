@@ -38,13 +38,15 @@ if (value) {
     <section className='title center'>
     <h2>
       <input defaultValue={value.data().title} type="text"
+      style={{textDecoration: value.data().completed ? "line-through wavy #454545" : null}}
       onChange={ (eo)=>{
         titleinput(eo)
       }}
       ref={inputElement}
        className='title-input center'/>
-      <i className="fa-regular fa-pen-to-square"   onClick={() => {  inputElement.current.focus()  }}
-/>
+      <i className="fa-regular fa-pen-to-square"   
+      onClick={() => {  inputElement.current.focus()  }}
+      />
     </h2>
   </section>
 

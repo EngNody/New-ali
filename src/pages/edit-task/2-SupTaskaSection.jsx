@@ -61,7 +61,7 @@ if (value) {
 
 
     {showaddnewtask && (
-      <div className='add-new-task flex'>
+      <form className='add-new-task flex' style={{flexDirection:"row"}}>
       
       <input value={supTitle}  className='add-task' type="text" 
           onChange={(eo)=>{
@@ -69,24 +69,26 @@ if (value) {
       }}
       />
       
-      <button 
+      <button
       
-      onClick={async ()=>{
+      onClick={async (eo)=>{
+        eo.preventDefault()
+        setsupTitle("")
         await updateDoc(doc(db, user.uid, appsameid), {
           details: arrayUnion(supTitle),
         });
 
-        setsupTitle("")
 
       }} 
       className='add'>Add</button>
       
       <button className='cancel' 
-       onClick={()=>{
+       onClick={(eo)=>{
+        eo.preventDefault()
       setshowaddnewtask(false)
     }}>Cancel</button>
       
-    </div>
+    </form>
     )}
 
   <div className='addbtn flex'>

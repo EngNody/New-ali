@@ -25,14 +25,23 @@ return <h1>Error</h1>;
 }
 
 if (value) {
+
+  console.log(value.docs)
+
+
 return (
 <section className="all-tasks flex">
+
+{ value.docs.length === 0 &&
+   (<h1>Congratulations! You have completed your tasks <span>🧡</span></h1>) }
+  
+
 {value.docs.map((item) => {
 
 
     return (
     <article dir="auto"  className="one-task" key={item.data().id} >
-    <Link to={`/edit-task/${item.data().id}`} >
+    <Link className="task-link" to={`/edit-task/${item.data().id}`} >
         <h2 >{item.data().title}</h2>
         <ul>
           {/* {item.data().details.map((item) => {
@@ -66,6 +75,9 @@ return (
     </article>
   );
 })}
+
+
+
 
 {/* ========================================================== */}
 

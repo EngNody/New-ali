@@ -154,3 +154,11 @@ transition:all 1s;
 /* .message{
   right: 3vw !important;
 } */
+
+.task-link{
+  
+  display: block;
+  /* border: 2px solid blue; */
+  height: 135px;
+
+}
