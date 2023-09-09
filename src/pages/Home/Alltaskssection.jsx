@@ -1,6 +1,6 @@
 import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { collection } from "firebase/firestore";
+import { collection, limit, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase/config.js";
 import { Link } from "react-router-dom";
 import ReactLoading from "react-loading";
@@ -10,7 +10,9 @@ import Moment from "react-moment";
 const Alltaskssection = ({ user }) => {
 // console.log(user);
 
-const [value, loading, error] = useCollection(collection(db, user.uid));
+const [value, loading, error] = useCollection(
+  query(collection(db, user.uid),orderBy("id","desc"),limit(3))
+  );
 
 if (loading) {
 return (
