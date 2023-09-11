@@ -97,9 +97,9 @@ setmovemessage(false);
 
   
   if (loading) {
-  <header/>
+  // <header/>
     return (<Loading />);
-  <Footer/>
+  // <Footer/>
   }
 
   if (error) {
@@ -184,21 +184,8 @@ setmovemessage(false);
 
            {/* <p> Welcome : {user.displayName} <span>🧡</span></p>  */}
 
-          {/* OPTIONS (filtered data) */}
-
-        <section className="parent-of-ptns">
-            <button>Newest first</button>
-          
-            <button>Oldest first</button>
-          
-            <select id="browsers">
-              <option value="Chrome"> All Tasks </option>
-              <option value="Firefox"> Completed </option>
-              <option value="Opera"> Not Completed </option>
-            </select>
-  
-          </section>
-
+      
+{/* xxxxxxxxxxxxxxxxxx butns takens xxxxxxxxxxxxxxxxxxxxxx */}
 
           {/* show all tasks */}
 
