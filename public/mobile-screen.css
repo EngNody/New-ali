@@ -18,7 +18,7 @@ p,button,a{
 }
 
 .main-list{
-  padding: 10px 10px;
+  padding: 12px 10px;
 }
 
 @media screen and (max-width:430px){
@@ -51,8 +51,6 @@ p,button,a{
     left: 30% !important;
     font-size: 13rem !important;
   }
-
-
 
 
 

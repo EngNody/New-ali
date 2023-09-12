@@ -8,11 +8,12 @@ import ThemeContext from "../context/ThemeContext";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 import {  signOut } from "firebase/auth";
-
+import { useTranslation } from 'react-i18next';
 
 
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const [user] = useAuthState(auth);
 
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -47,13 +48,41 @@ const Header = () => {
           }}
           className="fa-solid fa-sun"></i>
 
+
+
+
+
         <ul className="elementsulhead flex">
 
+          <li className="main-list lang">
+          <p style={{fontWeight:"400"}}>{t("lang")}</p>
+          
 
+          <ul className="lang-box">
+            <li dir="rtl" onClick={()=>{
+              i18n.changeLanguage("ar")
+            }}><p>العربية</p> 
+          { i18n.language === "ar" && (<i className="fa-solid fa-check"/>)}
+            </li>
+
+            <li  onClick={()=>{
+              i18n.changeLanguage("en")
+            }}><p>English</p>
+            {i18n.language === "en" && (<i className="fa-solid fa-check"/>)}
+             </li>
+
+            <li  onClick={()=>{
+              i18n.changeLanguage("fr")
+            }}><p>Frensh</p> 
+            {i18n.language === "fr" && (<i className="fa-solid fa-check"/>)}
+            </li>
+
+          </ul>
+          </li>
 
         {!user &&  <li className="main-list">
             <NavLink className="main-link" to="/signin">
-              Sign-in
+            {t("signin")}
             </NavLink>
           
           </li>  }
@@ -62,7 +91,7 @@ const Header = () => {
 
           {!user &&  <li className="main-list">
             <NavLink className="main-link" to="/signup">
-              Sign-up
+            {t("signup")}
             </NavLink>
           
           </li>   }
@@ -75,8 +104,10 @@ const Header = () => {
               // An error happened.
             });
           }} className="main-list">
-            <NavLink className="main-link">
-              Sign-out
+            <NavLink className="main-link" to={"/"}>
+
+            {t("signout")}
+
             </NavLink>
           
           </li>   }
@@ -85,7 +116,7 @@ const Header = () => {
         
           {user &&   <li className="main-list">
             <NavLink className="main-link" to="/about">
-              About
+              {t("about")}
             </NavLink>
             <ul className="sub-ul">
               <li>
@@ -102,7 +133,9 @@ const Header = () => {
 
           {user &&   <li className="main-list">
           <NavLink className="main-link" to="/css">
-            Css 
+            {/* Css  */}
+            {t("support")}
+
           </NavLink>
           <ul className="sub-ul">
             <li>
@@ -142,7 +175,7 @@ const Header = () => {
 
           {user &&   <li className="main-list">
           <NavLink className="main-link" to="/profile">
-            Profile
+            {t("account")}
           </NavLink>
   
         </li> }

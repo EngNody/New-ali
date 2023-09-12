@@ -10,7 +10,7 @@ import Moment from "react-moment";
 const Alltaskssection = ({ user }) => {
   // console.log(user);
 
-  const [selectname, setselectname] = useState("");
+  const [selectname, setselectname] = useState("aaa");
 
   const [intialData, setintialData] = useState(
     query(collection(db, user.uid), orderBy("id","asc")))
@@ -35,15 +35,15 @@ const Alltaskssection = ({ user }) => {
 
   if (value) {
     console.log(value.docs);
+    console.log(selectname)
 
     return (
       <div>
       {/* OPTIONS (filtered data) */}
-
+      
         <section className="parent-of-ptns">
 
-
-    {selectname === "aaa" &&
+    {selectname === "aaa" && (
       <div style={{display: "inline"}}>
             <button
              onClick={()=>{
@@ -62,9 +62,30 @@ const Alltaskssection = ({ user }) => {
             // style={{opacity:` ${myopacity ? '0.3' : '1'}`}}
             >Oldest first</button>
         
-      </div>
+      </div>)
     }
 
+    {/* {selectname === "" && (
+      <div style={{display: "inline"}}>
+            <button
+             onClick={()=>{
+              setintialData(query(collection(db, user.uid),orderBy("id","desc")))
+              setmyopacity(true)
+              // style={{opacity:"1"}}
+            }}
+            style={{opacity:myopacity ? '1' : '0.3'}}
+            >Newest first</button>
+        
+            <button onClick={()=>{
+              setintialData(query(collection(db, user.uid),orderBy("id","asc")))
+              setmyopacity(false)
+            }}
+            style={{opacity:myopacity ? '0.3' : '1'}}
+            // style={{opacity:` ${myopacity ? '0.3' : '1'}`}}
+            >Oldest first</button>
+        
+      </div>)
+    } */}
 
 {/* Ali do variables  setintialData() in lesson 19.2 */}
 {/* i don't do this for anderstand codes easly */}
@@ -131,7 +152,6 @@ const Alltaskssection = ({ user }) => {
               </article>
             );
           })}
-
           {/* ========================================================== */}
 
           {/* <article dir="auto" className="one-task">

@@ -11,7 +11,7 @@
  
  
 */
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap');
  
 /* ===============
    1.  ul class .flex
@@ -34,7 +34,7 @@ header.hide-when-mobile h1{
 }
 
 .main-list {
-  padding: 20px;
+  padding:20px 10px;
   font-size: 19px;
   position: relative;
 }
@@ -55,66 +55,14 @@ header.hide-when-mobile h1{
    1.1 sub HTML + css + JavaScript
 ======================================== */
 
-.sub-ul {
-  /* display: none; */
+/* in header .css page */
 
-  position: absolute;
-  top: 63px;
-  left: -15px;
-  border-top: 1px solid cyan;
-
-  background-color: #1b1b1b;
-
-  border-radius: 5px;
-  padding: 5px;
-
-  width: 155px;
-}
-
-.sub-of-js {
-  left: 10px;
-}
-
-/* .sub-ul li {
-  padding: 8px 0;
-  font-size: 17px;
-  border-bottom: 1px solid black;
-} */
-
-.sub-ul li a:hover {
-  color: cyan;
-  font-weight: bold;
-}
-
-.main-list:hover .sub-ul {
-  display: block;
-}
 
 /* =======================================
    1.2 sub sub of CSS
 ======================================== */
 
-.sub-sub-ul {
-  position: absolute;
-  top: 124px;
-  left: -145px;
-
-  border-top: 1px solid cyan;
-
-  background-color: #1b1b1b;
-
-  border-radius: 5px;
-  padding: 5px;
-
-  width: 150px;
-
-  /* display: none; */
-}
-
-.mini-projects:hover .sub-sub-ul {
-  display: block;
-}
-
+/* in header .css page */
 
 
 

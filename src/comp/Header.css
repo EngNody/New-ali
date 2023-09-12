@@ -62,19 +62,20 @@
 
 .sub-ul {
   display: none;
-  /* border: 2px solid blue; */
-
   position: absolute;
-  top: 49px;
-  /* left: -15px; */
+  top: 65px;
   border-top: 1px solid cyan;
 
   background-color: #1b1b1b;
 
   border-radius: 5px;
-  /* padding: 5px; */
+  padding: 5px;
 
-  width: 170px;
+  width: 155px;
+  z-index: 100;
+
+  /* width: 170px; */
+
 }
 
 .Light .sub-ul {
@@ -126,7 +127,7 @@ background-color: #7d7a7a;
 
 .sub-sub-ul {
   position: absolute;
-  top: 124px;
+  top: 118px;
   left: -145px;
   border-top: 1px solid cyan;
   background-color: #1b1b1b;
@@ -136,6 +137,8 @@ background-color: #7d7a7a;
   display: none;
   z-index: 100;
   /* border: 2px solid red; */
+  padding: 5px;
+  z-index: 100;
 }
 
 .Light .sub-sub-ul {
@@ -152,12 +155,43 @@ background-color: #7d7a7a;
   display: block;
 }
 
+/* language codes */
+ul.lang-box{
+  display: none;
+  /* border: 2px solid blue; */
+  position: absolute;
+  left: 6px;
+    top: 65px;
+  z-index: 100;
+  border-top: 1px solid cyan;
+  width: 130px;
+  border-radius: 5px;
+  background-color: #1b1b1b;
+}
+@media screen and (max-width:700px){
+  ul.lang-box {
+    top: 48px;
+    }
+}
 
+li.lang:hover ul.lang-box{
+  display: block;
+}
+ul.lang-box li{
+  display: flex;
+  justify-content: space-between;
+padding:8px 5px;  
+text-align: start;
+border-bottom: 1px solid black;
+font-size: 14px;
+transition: all 0.20s;
+}
 
-
-
-
-
+ul.lang-box li:hover{
+background-color: #151515;
+font-size: 15px;
+cursor: pointer;
+}
 
 
 

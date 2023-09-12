@@ -61,7 +61,7 @@ main{
   min-height: calc(100vh - 133px);
 
   font-size: 30px;
-  font-weight: bold;
+  /* font-weight: bold; */
 
   display: flex;
   justify-content: center;
