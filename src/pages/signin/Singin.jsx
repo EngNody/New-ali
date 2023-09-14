@@ -1,4 +1,4 @@
-import Header from "../../comp/header";
+import Header from "../../comp/Header";
 import Footer from "../../comp/Footer";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -8,7 +8,8 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './signin.css'
 import { sendPasswordResetEmail } from "firebase/auth";
-import Modal from '../../shared/modal'
+import Modal from '../../shared/Modal'
+import ReactLoading from "react-loading";
 
 const Signin = () => {
   const [email, setemail] = useState("");
@@ -17,6 +18,8 @@ const Signin = () => {
   const [haserror, sethaserror] = useState(false);
   const [firebaseerror, setfirebaseerror] = useState("");
   const [showsendemail, setshowsendemail] = useState(false);
+  const [spinloading, setspinloading] = useState(false);
+
   // const [showform, setshowform] = useState("");
   const navigate = useNavigate();
 
@@ -44,9 +47,10 @@ console.log(errorMessage)
 }
 
 // function sign in btn
-const signinbtn = (eo) => {
+const signinbtn = async (eo) => {
   eo.preventDefault();
-  signInWithEmailAndPassword(auth, email, password)
+  setspinloading(true)
+await  signInWithEmailAndPassword(auth, email, password)
 .then((userCredential) => {
 // Signed in 
 const user = userCredential.user;
@@ -92,6 +96,7 @@ break;
 }
 // { true && <h1>Error {errorCode}</h1>} you can write errorMessage here not in p element down (block scoop)
 });
+setspinloading(false)
 }
 
 // level3
@@ -163,7 +168,15 @@ onChange={(eo) => {
           }}/>
           <button onClick={(eo) => {
             signinbtn(eo)
-          }}>Sign in</button>
+          }}> 
+              {spinloading ?  
+
+              <div style={{display:"flex", justifyContent: "center"}}>
+              <ReactLoading type={"spin"} color={"white"} height={20} width={20} />
+              </div>     
+
+          :  "Sign in"}    
+                  </button>
           <p className="account">
             Don't hava an account <Link to="/signup"> Sign-up</Link>
           </p>

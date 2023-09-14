@@ -22,17 +22,15 @@ const resources = {
   }
 };
 
-i18n.use(LanguageDetector)
+i18n
+  .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    detection:{
-      order: [ 'localStorage', 'htmlTag'],
-      caches: ['localStorage'],
-
+    detection: {
+      order: ["localStorage", "htmlTag" ],
+      caches: ["localStorage"],
     },
-
-
 
     // lng: "en", 
     // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
@@ -40,13 +38,15 @@ i18n.use(LanguageDetector)
     // if you're using a language detector, do not define the lng option
 
     interpolation: {
-      escapeValue: false // react already safes from xss
+      escapeValue: false, // react already safes from xss
     },
-    react:{
-      useSuspense: false
-    }
 
+    react: {
+      useSuspense: false,
+    },
   });
+
+
 
   export default i18n;
 

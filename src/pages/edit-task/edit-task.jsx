@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import './edit-task.css'
-import Header from './../../comp/header';
+import Header from '../../comp/Header';
 import Footer from './../../comp/Footer';
 import { Helmet } from 'react-helmet-async';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../../firebase/config.js';
-import Loading from '../../comp/loading';
+import Loading from '../../comp/Loading';
 // import Erroe404 from '../../comp/404';
 // @ts-ignore
 import Titlesection from './1-Titlesection'

@@ -1,6 +1,6 @@
-import Header from "../comp/header";
+import Header from "../comp/Header";
 import Footer from "../comp/Footer";
-import Loading from '../comp/loading';
+import Loading from '../comp/Loading';
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useState } from 'react';
@@ -11,11 +11,16 @@ import { useNavigate } from "react-router-dom";
 import { updateProfile ,sendEmailVerification} from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect } from 'react';
+import { useTranslation } from "react-i18next";
+import ReactLoading from "react-loading";
 
 
 
 
 const Signup = () => {
+  const { t, i18n } = useTranslation();
+  const [spinloading, setspinloading] = useState(false);
+  // console.log(setspinloading)
   const [userName, setuserName] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -23,7 +28,7 @@ const Signup = () => {
   const [haserror, sethaserror] = useState(false);
   const [firebaseerror, setfirebaseerror] = useState("");
 
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
 
   useEffect(() => {
@@ -35,13 +40,13 @@ const Signup = () => {
   })
 
   // function when click button sign up
-const signupbtn = (eo) => {
+const signupbtn = async (eo) => {
   eo.preventDefault();
-            
-  createUserWithEmailAndPassword(auth, email, password)
+  setspinloading(true)
+ await  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
+      // const user = userCredential.user;
 
       sendEmailVerification(auth.currentUser)
       .then(() => {
@@ -68,7 +73,7 @@ const signupbtn = (eo) => {
     .catch((error) => {
       const errorCode = error.code;
       console.log(errorCode)
-      const errorMessage = error.message;
+      // const errorMessage = error.message;
 
       sethaserror(true)
       // setfirebaseerror(errorMessage)
@@ -100,6 +105,8 @@ const signupbtn = (eo) => {
       // { true && <h1>Error {errorCode}</h1>} you can write errorMessage here not in p element down (block scoop)
   
     });
+    setspinloading(false)
+
 }
 
 
@@ -132,8 +139,16 @@ if (!user) {
       <Header />
 
       <main>
-        <form>
-          <p style={{ fontSize: "23px", marginBottom: "22px" }}>Create a new account <span>🧡</span> </p>
+        <form className="widthform">
+          <p style={{ fontSize: "23px", marginBottom: "22px" }}> 
+          {/* Create a new account */}
+          {i18n.language === "en" && "Create a new account"}
+          {i18n.language === "ar" && " أضف حساب جديد "}
+          {i18n.language === "fr" && "Créer un nouveau compte"}
+
+                
+          
+           <span>🧡</span> </p>
         
           <input onChange={(eo) => {
 
@@ -150,11 +165,24 @@ if (!user) {
           }} required placeholder=" Password : " type="password" />
           <button onClick={(eo) => {
             signupbtn(eo)
-          }}>Sign up</button>
+          }}> 
+
+         {spinloading ?  
+              <div style={{display:"flex", justifyContent: "center"}}>
+              <ReactLoading type={"spin"} color={"white"} height={20} width={20} />
+              </div>         
+          :  "sign up"}  
+
+
+      
+        
+          </button>
           <p className="account">
-            Already hava an account <Link to="/signin"> Sign-in</Link>
+            Already hava an account <Link to="/signin">
+             {t("signin")}
+             </Link>
           </p>
-          {haserror && <h2>{firebaseerror}</h2>}
+          {haserror && <h6 style={{marginTop: "15px"}}>{firebaseerror}</h6>}
 
         </form>
       </main>

@@ -4,7 +4,7 @@ import { collection } from "firebase/firestore";
 import { db } from "../../firebase/config";
 // import Loading from 'react-loading';
 // import Erroe404 from '../../comp/404';
-import Loading from './../../comp/loading';
+import Loading from '../../comp/Loading';
 
 
 

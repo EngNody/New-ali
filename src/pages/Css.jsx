@@ -1,8 +1,8 @@
 
 
-import Header from "../comp/header";
+import Header from "../comp/Header";
 import Footer from "../comp/Footer";
-import Loading from '../comp/loading';
+import Loading from '../comp/Loading';
 import Erroe404 from '../comp/404';
 
 import MainContent from "../comp/MainContent";

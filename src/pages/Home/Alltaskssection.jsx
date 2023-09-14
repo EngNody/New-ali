@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { collection, limit, orderBy, query, where} from "firebase/firestore";
+import { collection, orderBy, query, where} from "firebase/firestore";
 import { db } from "../../firebase/config.js";
 import { Link } from "react-router-dom";
 import ReactLoading from "react-loading";
 import Moment from "react-moment";
+import { useTranslation } from "react-i18next";
+
 // import Moment from 'react-moment';
 
 const Alltaskssection = ({ user }) => {
   // console.log(user);
+  const { i18n } = useTranslation();
 
   const [selectname, setselectname] = useState("aaa");
 
@@ -52,7 +55,13 @@ const Alltaskssection = ({ user }) => {
               // style={{opacity:"1"}}
             }}
             style={{opacity:myopacity ? '1' : '0.3'}}
-            >Newest first</button>
+            >
+            {/* Newest first */}
+            {i18n.language === "fr" && "Le plus récent"}
+                {i18n.language === "en" && "Newest first"}
+                {i18n.language === "ar" && "الأحدث أولاً"}
+            
+            </button>
         
             <button onClick={()=>{
               setintialData(query(collection(db, user.uid),orderBy("id","asc")))
@@ -60,7 +69,13 @@ const Alltaskssection = ({ user }) => {
             }}
             style={{opacity:myopacity ? '0.3' : '1'}}
             // style={{opacity:` ${myopacity ? '0.3' : '1'}`}}
-            >Oldest first</button>
+            >
+            {/* Oldest first */}
+            {i18n.language === "en" && "Oldest first"}
+                {i18n.language === "ar" && "الأقدم أولاً"}
+                {i18n.language === "fr" && "Le plus ancien"}
+            
+            </button>
         
       </div>)
     }
@@ -104,9 +119,27 @@ const Alltaskssection = ({ user }) => {
               setselectname("ccc")
             };
           }}>
-            <option value="aaa"> All Tasks </option>
-            <option value="bbb"> Completed </option>
-            <option value="ccc"> Not Completed </option>
+            <option value="aaa">
+             {/* All Tasks */}
+             
+             {i18n.language === "ar" && "جميع المهام"}
+              {i18n.language === "en" && "All Tasks "}
+              {i18n.language === "fr" && "Toutes les tâches"}{" "}
+              </option>
+            <option value="bbb"> 
+            {/* Completed  */}
+            
+            {i18n.language === "ar" && "المهام المكتملة"}
+              {i18n.language === "en" && "Completed Tasks"}
+              {i18n.language === "fr" && "Tâches terminées"}{" "}
+            </option>
+            <option value="ccc">
+             {/* Not Completed  */}
+             
+             {i18n.language === "en" && "Not Completed Tasks"}
+              {i18n.language === "ar" && "المهام غير المكتملة"}
+              {i18n.language === "fr" && "Tâches non terminées"}{" "}
+             </option>
           </select>
         </section>
 

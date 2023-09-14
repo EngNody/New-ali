@@ -1,10 +1,10 @@
-import Header from "../comp/header";
+import Header from "../comp/Header";
 import Footer from "../comp/Footer";
-import Loading from '../comp/loading';
+import Loading from '../comp/Loading';
 import Erroe404 from '../comp/404';
 import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';

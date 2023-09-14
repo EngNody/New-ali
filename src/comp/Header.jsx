@@ -6,7 +6,7 @@ import "../theme.css";
 import { useContext } from "react";
 import ThemeContext from "../context/ThemeContext";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase/config';
+import { auth } from '../firebase/config.js';
 import {  signOut } from "firebase/auth";
 import { useTranslation } from 'react-i18next';
 
@@ -17,6 +17,7 @@ const Header = () => {
   const [user] = useAuthState(auth);
 
   const { theme, toggleTheme } = useContext(ThemeContext);
+
 
   
   return (
@@ -59,9 +60,9 @@ const Header = () => {
           
 
           <ul className="lang-box">
-            <li dir="rtl" onClick={()=>{
+            <li  onClick={()=>{
               i18n.changeLanguage("ar")
-            }}><p>العربية</p> 
+            }}  dir="rtl"><p>العربية</p> 
           { i18n.language === "ar" && (<i className="fa-solid fa-check"/>)}
             </li>
 

@@ -3,7 +3,7 @@
 
 import React from 'react';
 import ReactLoading from 'react-loading';
-import Modal from '../../shared/modal';
+import Modal from '../../shared/Modal';
 
 
 

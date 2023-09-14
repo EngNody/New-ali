@@ -1,6 +1,6 @@
-import Header from "../comp/header";
+import Header from "../comp/Header";
 import Footer from "../comp/Footer";
-import Loading from '../comp/loading';
+import Loading from '../comp/Loading';
 import MainContent from "../comp/MainContent";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from 'react';

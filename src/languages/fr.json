@@ -6,7 +6,13 @@
   "lang": " la langue",
   "signout": "se déconnecter",
   "support": "entre d'aidec",
-  "account": "Le profil"
+  "account": "Le profil",
+
+
+
+  "about":"environ",
+"signup":"S’inscrire",
+"signin":"Connexion"
 }
 
 
